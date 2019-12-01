@@ -21,7 +21,7 @@ class RegistrationControllerTest {
     @Test
     void simpleTest() {
         final GetUserRq getUserRq = new GetUserRq();
-        getUserRq.setLogin("");
+        getUserRq.setUsername("");
         final RegistrationRs registrationRs = controller.findByLogin(getUserRq);
         assertNotNull(registrationRs);
         assertNotNull(registrationRs.getSuccess());

@@ -14,7 +14,7 @@ import java.io.Serializable;
 @XmlRootElement(name = "registrationRq")
 public class RegistrationRq implements Serializable {
     @Nullable
-    private String login;
+    private String username;
     @Nullable
     private String password;
 }

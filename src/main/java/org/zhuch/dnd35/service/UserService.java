@@ -5,8 +5,8 @@ import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.zhuch.dnd35.entity.User;
-import org.zhuch.dnd35.entity.UserDTO;
+import org.zhuch.dnd35.entity.user.User;
+import org.zhuch.dnd35.entity.user.AppUserDetails;
 import org.zhuch.dnd35.repository.IUserRepository;
 
 import java.util.Optional;
@@ -24,33 +24,33 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public @Nullable UserDTO getUserByLogin(@NotNull final String login) {
-        final User user = userRepository.findUserByLogin(login);
+    public @Nullable AppUserDetails loadUserByUsername(@NotNull final String username) {
+        final User user = userRepository.findUserByUsername(username);
         return user == null ? null : user.produceDTO();
     }
 
     @Override
     @Transactional
-    public @NotNull Boolean existByLogin(@NotNull String login) {
-        return userRepository.existsByLogin(login);
+    public @NotNull Boolean existByLogin(@NotNull String username) {
+        return userRepository.existsByUsername(username);
     }
 
     @Override
     @Transactional
-    public @NotNull UserDTO get(@NotNull final String id) {
-        return UserDTO.builder().build();
+    public @NotNull AppUserDetails get(@NotNull final String id) {
+        return AppUserDetails.builder().build();
     }
 
 
     @Override
     @Transactional
-    public @NotNull UserDTO save(@NotNull final UserDTO entityDTO) {
+    public @NotNull AppUserDetails save(@NotNull final AppUserDetails entityDTO) {
         final User user = userRepository.save(
                 User.builder()
                         .id(Optional.of(entityDTO.getId())
                                 .filter(id -> !id.isEmpty())
                                 .orElse(UUID.randomUUID().toString()))
-                        .login(entityDTO.getLogin())
+                        .username(entityDTO.getUsername())
                         .passwordHash(entityDTO.getPasswordHash())
                         .build());
         return user.produceDTO();

@@ -14,5 +14,5 @@ import java.io.Serializable;
 @XmlRootElement(name = "findUser")
 public class GetUserRq implements Serializable {
     @Nullable
-    private String login;
+    private String username;
 }

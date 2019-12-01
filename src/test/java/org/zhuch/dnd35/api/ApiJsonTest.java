@@ -12,7 +12,7 @@ class ApiJsonTest {
     void testAuthRequest() throws JsonProcessingException {
         final ObjectMapper objectMapper = new ObjectMapper();
         final AuthRequest authRequest = new AuthRequest();
-        authRequest.setLogin("testLogin");
+        authRequest.setUsername("testLogin");
         authRequest.setPassword("testPassword");
         assertEquals("{\n" +
                 "  \"login\" : \"testLogin\",\n" +
@@ -25,7 +25,7 @@ class ApiJsonTest {
     void testAuthResponse() throws JsonProcessingException {
         final ObjectMapper objectMapper = new ObjectMapper();
         final AuthResponse authResponse = new AuthResponse();
-        authResponse.setToken("testToken");
+        authResponse.setRefresh("testToken");
         authResponse.setSuccess(true);
         authResponse.setMessage("testMsg");
         assertEquals("{\n" +

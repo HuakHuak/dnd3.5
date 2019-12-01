@@ -18,7 +18,7 @@ public class RegistrationRs implements Serializable {
     @Nullable
     private String id;
     @Nullable
-    private String login;
+    private String username;
     @Nullable
     private Boolean success;
     @Nullable

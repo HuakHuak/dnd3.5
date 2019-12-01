@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "authResponse")
 public class AuthResponse {
     @Nullable
-    private String token;
+    private String refresh;
     @Nullable
     private Boolean success;
     @Nullable

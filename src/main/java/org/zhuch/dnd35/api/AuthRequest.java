@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "authRequest")
 public class AuthRequest {
     @Nullable
-    private String login;
+    private String username;
     @Nullable
     private String password;
 }
